@@ -1,4 +1,4 @@
-package com.wzhy.recyclerviewstu.simple;
+package com.wzhy.recyclerviewstu.base.sample;
 
 public class ItemEntity {
 

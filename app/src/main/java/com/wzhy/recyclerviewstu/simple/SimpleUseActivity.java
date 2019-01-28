@@ -13,6 +13,7 @@ import android.view.View;
 
 import com.wzhy.recyclerviewstu.BaseActivity;
 import com.wzhy.recyclerviewstu.R;
+import com.wzhy.recyclerviewstu.base.sample.ItemEntity;
 
 import java.util.ArrayList;
 import java.util.List;

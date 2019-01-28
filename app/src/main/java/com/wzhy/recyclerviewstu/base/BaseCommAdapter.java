@@ -11,17 +11,12 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.Map;
 
-public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseRecyclerAdapter.RecyclerVHolder> {
+public abstract class BaseCommAdapter<T> extends RecyclerView.Adapter<BaseCommAdapter.RecyclerVHolder> {
 
     protected List<T> mDataList;
 
-    protected final int mItemLayoutId;
-
-    protected boolean isScrolling;
-
-    protected Context cxt;
+    protected Context mContext;
 
     private OnItemClickListener mItemClickListener;
 
@@ -30,7 +25,7 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseRe
     }
 
 
-    public BaseRecyclerAdapter(RecyclerView rv, Collection<T> datas, int itemLayoutId) {
+    public BaseCommAdapter(RecyclerView rv, Collection<T> datas) {
         if (datas == null) {
             mDataList = new ArrayList<>();
         } else if (datas instanceof List) {
@@ -38,35 +33,23 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseRe
         } else {
             mDataList = new ArrayList<>(datas);
         }
-
-        this.mItemLayoutId = itemLayoutId;
-        cxt = rv.getContext();
-
-        rv.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-                super.onScrollStateChanged(recyclerView, newState);
-                isScrolling = !(newState == RecyclerView.SCROLL_STATE_IDLE);
-                if (!isScrolling) {
-                    notifyDataSetChanged();
-                }
-            }
-        });
+        mContext = rv.getContext();
     }
 
-    public abstract void convert(RecyclerVHolder holder, T item, int position, boolean isScrolling);
+    public abstract void convert(RecyclerVHolder holder, T item, int position);
+
+    public abstract int getItemLayoutId(int itemViewType);
+    ;
 
     @NonNull
     @Override
     public RecyclerVHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater inflater = LayoutInflater.from(cxt);
-        View root = inflater.inflate(mItemLayoutId, parent, false);
-        return new RecyclerVHolder(root);
+        return RecyclerVHolder.getHolder(mContext, parent, getItemLayoutId(viewType));
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerVHolder holder, int position) {
-        convert(holder, mDataList.get(position), position, isScrolling);
+        convert(holder, mDataList.get(position), position);
         holder.itemView.setOnClickListener(getOnClickListener(position));
 
     }
@@ -74,6 +57,11 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseRe
     @Override
     public int getItemCount() {
         return mDataList.size();
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return super.getItemViewType(position);
     }
 
     public void setOnItemClickListener(OnItemClickListener<T> listener) {
@@ -91,7 +79,7 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseRe
         };
     }
 
-    public BaseRecyclerAdapter<T> refresh(Collection<T> datas) {
+    public BaseCommAdapter<T> refresh(Collection<T> datas) {
         if (datas == null) {
             mDataList = new ArrayList<>();
         } else if (datas instanceof List) {
@@ -111,6 +99,15 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseRe
             super(itemView);
             this.mViews = new SparseArray<View>(((ViewGroup) itemView).getChildCount());
         }
+
+
+        @NonNull
+        protected static RecyclerVHolder getHolder(Context context, @NonNull ViewGroup parent, int itemLayoutId) {
+            LayoutInflater inflater = LayoutInflater.from(context);
+            View root = inflater.inflate(itemLayoutId, parent, false);
+            return new RecyclerVHolder(root);
+        }
+
 
         public SparseArray<View> getAllView() {
             return mViews;
