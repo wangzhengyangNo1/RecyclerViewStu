@@ -23,11 +23,18 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected View.OnClickListener getOnNoDoubleClickListener() {
         if (mOnClickListener == null) {
             mOnClickListener = new View.OnClickListener() {
+
+                long clickTimeMillis = 0;
+
                 @Override
                 public void onClick(View v) {
-                    v.setEnabled(false);
+
+                    long elapse = System.currentTimeMillis() - clickTimeMillis;
+                    if (elapse < 800) {
+                        return;
+                    }
                     BaseActivity.this.onClick(v);
-                    v.setEnabled(true);
+                    clickTimeMillis = System.currentTimeMillis();
                 }
             };
         }

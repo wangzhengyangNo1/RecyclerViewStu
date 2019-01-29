@@ -6,11 +6,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.wzhy.recyclerviewstu.headerandfooter.HeaderFooterActivity;
 import com.wzhy.recyclerviewstu.simple.SimpleUseActivity;
 
 public class MainActivity extends BaseActivity {
 
     private TextView mSimpleUseTv;
+    private TextView mHeaderFooterTv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +25,7 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void initView() {
         mSimpleUseTv = (TextView) findViewById(R.id.simple_use_tv);
+        mHeaderFooterTv = (TextView) findViewById(R.id.header_footer_tv);
     }
 
     @Override
@@ -32,7 +35,8 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void setListeners() {
-        mSimpleUseTv.setOnClickListener(getOnClickListener());
+        mSimpleUseTv.setOnClickListener(getOnNoDoubleClickListener());
+        mHeaderFooterTv.setOnClickListener(getOnNoDoubleClickListener());
     }
 
     @Override
@@ -41,6 +45,9 @@ public class MainActivity extends BaseActivity {
         switch (v.getId()) {
             case R.id.simple_use_tv:
                 intent.setClass(MainActivity.this, SimpleUseActivity.class);
+                break;
+            case R.id.header_footer_tv:
+                intent.setClass(MainActivity.this, HeaderFooterActivity.class);
                 break;
         }
         startActivity(intent);

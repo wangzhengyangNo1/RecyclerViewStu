@@ -45,36 +45,7 @@
             android:background="?android:attr/listDivider" />
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="12dp"
-            android:background="@drawable/shape_main_nav_btn"
-            android:padding="8dp"
-            android:text="嵌套滑动"
-            android:textColor="@color/colorGrayF0"
-            android:textSize="16sp" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="?android:attr/listDivider" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="12dp"
-            android:background="@drawable/shape_main_nav_btn"
-            android:padding="8dp"
-            android:text="与SwipeRefreshLayout结合的加载刷新"
-            android:textColor="@color/colorGrayF0"
-            android:textSize="16sp" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="?android:attr/listDivider" />
-
-        <TextView
+            android:id="@+id/header_footer_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="12dp"
@@ -83,6 +54,36 @@
             android:text="Header和Footer"
             android:textColor="@color/colorGrayF0"
             android:textSize="16sp" />
+
+        <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider" />
+
+        <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        android:background="@drawable/shape_main_nav_btn"
+        android:padding="8dp"
+        android:text="嵌套滑动"
+        android:textColor="@color/colorGrayF0"
+        android:textSize="16sp" />
+
+        <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider" />
+
+        <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        android:background="@drawable/shape_main_nav_btn"
+        android:padding="8dp"
+        android:text="与SwipeRefreshLayout结合的加载刷新"
+        android:textColor="@color/colorGrayF0"
+        android:textSize="16sp" />
 
         <View
             android:layout_width="match_parent"

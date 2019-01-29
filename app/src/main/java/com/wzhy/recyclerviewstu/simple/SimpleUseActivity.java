@@ -7,13 +7,17 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import com.wzhy.recyclerviewstu.BaseActivity;
 import com.wzhy.recyclerviewstu.R;
 import com.wzhy.recyclerviewstu.base.sample.ItemEntity;
+import com.wzhy.recyclerviewstu.headerandfooter.HeaderAndFooterWrapper;
+import com.wzhy.recyclerviewstu.headerandfooter.ViewHolder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -105,6 +109,11 @@ public class SimpleUseActivity extends BaseActivity {
                 break;
         }
         mSimpleUseRv.setLayoutManager(mLayoutManager);
+//        HeaderAndFooterWrapper<ItemEntity> adapter = new HeaderAndFooterWrapper<ItemEntity>(mAdapter);
+//        View headerView = LayoutInflater.from(SimpleUseActivity.this).inflate(R.layout.item_header_view_1, mSimpleUseRv, false);
+//        View headerView1 = LayoutInflater.from(SimpleUseActivity.this).inflate(R.layout.item_header_view_1, mSimpleUseRv, false);
+//        adapter.addHeaderView(headerView);
+//        adapter.addHeaderView(headerView1);
         mSimpleUseRv.setAdapter(mAdapter);
         mAdapter.notifyDataSetChanged();
 
