@@ -1,5 +1,6 @@
 package com.wzhy.recyclerviewstu.headerandfooter;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v4.util.SparseArrayCompat;
 import android.support.v7.widget.GridLayoutManager;
@@ -11,6 +12,7 @@ import android.view.ViewGroup;
 
 /**
  * 具有Header、Footer的包装类
+ * 来自鸿洋_：[Android 优雅的为RecyclerView添加HeaderView和FooterView](https://blog.csdn.net/lmj623565791/article/details/51854533)
  */
 public class HeaderAndFooterWrapper<T> extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
@@ -76,7 +78,7 @@ public class HeaderAndFooterWrapper<T> extends RecyclerView.Adapter<RecyclerView
         return mInnerAdapter.getItemViewType(position - getHeadersCount());
     }
 
-    private int getRealItemCount() {
+    public int getRealItemCount() {
         return mInnerAdapter.getItemCount();
     }
 
@@ -95,6 +97,14 @@ public class HeaderAndFooterWrapper<T> extends RecyclerView.Adapter<RecyclerView
         return getHeadersCount() + getRealItemCount() + getFootersCount();
     }
 
+    @Override
+    public long getItemId(int position) {
+        if (isHeaderViewPos(position) || isFooterViewPos(position)) {
+            return RecyclerView.NO_ID;
+        } else {
+            return mInnerAdapter.getItemId(position - getHeadersCount());
+        }
+    }
 
     @Override
     public void onAttachedToRecyclerView(@NonNull RecyclerView recyclerView) {
@@ -134,5 +144,40 @@ public class HeaderAndFooterWrapper<T> extends RecyclerView.Adapter<RecyclerView
                 staggeredLp.setFullSpan(true);
             }
         }
+    }
+
+    private static class ViewHolder extends RecyclerView.ViewHolder {
+
+//        private SparseArray<View> mViews;
+
+
+        public ViewHolder(View itemView) {
+            super(itemView);
+//            mViews = new SparseArray<>();
+        }
+
+        public static ViewHolder createViewHolder(Context context, View itemView) {
+            return new ViewHolder(itemView);
+        }
+
+//        public SparseArray<View> getAllView() {
+//            return mViews;
+//        }
+//
+//        /**
+//         * 通过控件的id获取对应的控件，如果没有则加入mViews
+//         * @param viewId view的id
+//         * @param <V> 泛型，View的子类
+//         * @return
+//         */
+//        public <V extends View> V getView(int viewId) {
+//            View v = mViews.get(viewId);
+//            if (v == null) {
+//                v = itemView.findViewById(viewId);
+//                mViews.append(viewId, v);
+//            }
+//            return (V) v;
+//        }
+
     }
 }

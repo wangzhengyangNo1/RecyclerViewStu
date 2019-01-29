@@ -19,10 +19,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!--简单使用-->
         <activity
             android:name=".simple.SimpleUseActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".headerandfooter.HeaderFooterActivity"></activity>
+
+        <!--添加HeaderView和FooterView-->
+        <activity
+            android:name=".headerandfooter.HeaderFooterActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
