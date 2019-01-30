@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.wzhy.recyclerviewstu.MyApp;
@@ -78,7 +79,10 @@ public class DividerTestAdapter extends RecyclerView.Adapter<DividerTestAdapter.
     public void onBindViewHolder(@NonNull ItemViewHolder holder, int position) {
         ItemEntity item = getItem(position);
         if (isStaggered) {
-            ViewGroup.LayoutParams lp = holder.titleTv.getLayoutParams();
+            final int color = MyApp.getAppContext().getResources().getColor(R.color.colorGray9);
+            holder.itemView.setBackgroundColor(color);
+            LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) holder.titleTv.getLayoutParams();
+            lp.setMargins(4,4,4,4);
             if (mOrientation == OrientationHelper.HORIZONTAL) {
                 ViewGroup.LayoutParams itemViewLp = holder.itemView.getLayoutParams();
                 itemViewLp.width = ViewGroup.LayoutParams.WRAP_CONTENT;
