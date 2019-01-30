@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.wzhy.recyclerviewstu.divides.DividerTestActivity;
 import com.wzhy.recyclerviewstu.headerandfooter.HeaderFooterActivity;
 import com.wzhy.recyclerviewstu.simple.SimpleUseActivity;
 
@@ -13,6 +14,7 @@ public class MainActivity extends BaseActivity {
 
     private TextView mSimpleUseTv;
     private TextView mHeaderFooterTv;
+    private TextView mDividerTv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +28,7 @@ public class MainActivity extends BaseActivity {
     protected void initView() {
         mSimpleUseTv = (TextView) findViewById(R.id.simple_use_tv);
         mHeaderFooterTv = (TextView) findViewById(R.id.header_footer_tv);
+        mDividerTv = (TextView) findViewById(R.id.divider_tv);
     }
 
     @Override
@@ -37,6 +40,7 @@ public class MainActivity extends BaseActivity {
     protected void setListeners() {
         mSimpleUseTv.setOnClickListener(getOnNoDoubleClickListener());
         mHeaderFooterTv.setOnClickListener(getOnNoDoubleClickListener());
+        mDividerTv.setOnClickListener(getOnNoDoubleClickListener());
     }
 
     @Override
@@ -48,6 +52,9 @@ public class MainActivity extends BaseActivity {
                 break;
             case R.id.header_footer_tv:
                 intent.setClass(MainActivity.this, HeaderFooterActivity.class);
+                break;
+                case R.id.divider_tv:
+                intent.setClass(MainActivity.this, DividerTestActivity.class);
                 break;
         }
         startActivity(intent);

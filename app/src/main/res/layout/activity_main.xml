@@ -12,7 +12,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-
         <TextView
             android:id="@+id/simple_use_tv"
             android:layout_width="match_parent"
@@ -23,11 +22,6 @@
             android:text="简单使用"
             android:textColor="@color/colorGrayF0"
             android:textSize="16sp" />
-        <View
-            android:id="@+id/divider"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="?android:attr/listDivider" />
 
         <TextView
             android:layout_width="match_parent"
@@ -39,10 +33,6 @@
             android:textColor="@color/colorGrayF0"
             android:textSize="16sp" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="?android:attr/listDivider" />
 
         <TextView
             android:id="@+id/header_footer_tv"
@@ -55,40 +45,39 @@
             android:textColor="@color/colorGrayF0"
             android:textSize="16sp" />
 
-        <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="?android:attr/listDivider" />
 
         <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="12dp"
-        android:background="@drawable/shape_main_nav_btn"
-        android:padding="8dp"
-        android:text="嵌套滑动"
-        android:textColor="@color/colorGrayF0"
-        android:textSize="16sp" />
-
-        <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="?android:attr/listDivider" />
-
-        <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="12dp"
-        android:background="@drawable/shape_main_nav_btn"
-        android:padding="8dp"
-        android:text="与SwipeRefreshLayout结合的加载刷新"
-        android:textColor="@color/colorGrayF0"
-        android:textSize="16sp" />
-
-        <View
+            android:id="@+id/divider_tv"
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="?android:attr/listDivider" />
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            android:background="@drawable/shape_main_nav_btn"
+            android:padding="8dp"
+            android:text="分割线Divider （ItemDecoration）"
+            android:textColor="@color/colorGrayF0"
+            android:textSize="16sp" />
+
+
+        <TextView
+            android:id="@+id/nest_scroll_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            android:background="@drawable/shape_main_nav_btn"
+            android:padding="8dp"
+            android:text="嵌套滑动"
+            android:textColor="@color/colorGrayF0"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            android:background="@drawable/shape_main_nav_btn"
+            android:padding="8dp"
+            android:text="与SwipeRefreshLayout结合的加载刷新"
+            android:textColor="@color/colorGrayF0"
+            android:textSize="16sp" />
 
 
         <TextView
@@ -101,11 +90,6 @@
             android:textColor="@color/colorGrayF0"
             android:textSize="16sp" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="?android:attr/listDivider" />
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -115,41 +99,6 @@
             android:text="简单使用"
             android:textColor="@color/colorGrayF0"
             android:textSize="16sp" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="?android:attr/listDivider" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="12dp"
-            android:background="@drawable/shape_main_nav_btn"
-            android:padding="8dp"
-            android:text="简单使用"
-            android:textColor="@color/colorGrayF0"
-            android:textSize="16sp" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="?android:attr/listDivider" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="12dp"
-            android:background="@drawable/shape_main_nav_btn"
-            android:padding="8dp"
-            android:text="简单使用"
-            android:textColor="@color/colorGrayF0"
-            android:textSize="16sp" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="?android:attr/listDivider" />
 
         <TextView
             android:layout_width="match_parent"
@@ -162,6 +111,15 @@
             android:textSize="16sp" />
 
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            android:background="@drawable/shape_main_nav_btn"
+            android:padding="8dp"
+            android:text="简单使用"
+            android:textColor="@color/colorGrayF0"
+            android:textSize="16sp" />
 
 
     </LinearLayout>

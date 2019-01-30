@@ -6,6 +6,25 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:listDivider">@drawable/shape_div_linear</item>
     </style>
+
+
+    <style name="MBase"/>
+
+    <style name="MBase.Line">
+        <item name="android:background">@color/colorGrayE6</item>
+    </style>
+
+    <style name="MBase.Line.Horizontal">
+        <item name="android:layout_width">@dimen/cardview_compat_inset_shadow</item>
+        <item name="android:layout_height">@dimen/line_width</item>
+    </style>
+
+    <style name="MBase.Line.Vertical">
+        <item name="android:layout_width">@dimen/line_width</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
 
 </resources>

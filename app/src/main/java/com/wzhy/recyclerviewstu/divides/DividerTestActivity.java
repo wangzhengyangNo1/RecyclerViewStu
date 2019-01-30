@@ -1,7 +1,8 @@
-package com.wzhy.recyclerviewstu.simple;
+package com.wzhy.recyclerviewstu.divides;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.OrientationHelper;
@@ -14,16 +15,18 @@ import android.view.View;
 import com.wzhy.recyclerviewstu.BaseActivity;
 import com.wzhy.recyclerviewstu.R;
 import com.wzhy.recyclerviewstu.base.sample.ItemEntity;
+import com.wzhy.recyclerviewstu.simple.SimpleUseAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class SimpleUseActivity extends BaseActivity {
+public class DividerTestActivity extends BaseActivity {
 
     private RecyclerView mSimpleUseRv;
-    private SimpleUseAdapter mAdapter;
+    private DividerTestAdapter mAdapter;
     RecyclerView.LayoutManager mLayoutManager;
-    private List<ItemEntity> mDataList;
+    private DividerItemDecoration mLinearDivider;
+    private GridDividerItemDecoration mGridDivider;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,25 +78,36 @@ public class SimpleUseActivity extends BaseActivity {
     @Override
     protected void initView() {
         mSimpleUseRv = (RecyclerView) findViewById(R.id.simple_use_rv);
+        mLinearDivider = new DividerItemDecoration(this, RecyclerView.HORIZONTAL);
+        mGridDivider = new GridDividerItemDecoration(this);
         initRv(LINEAR_VERTICAL);
     }
 
 
     private void initRv(int type) {
-        mAdapter = new SimpleUseAdapter();
+        mAdapter = new DividerTestAdapter();
         mAdapter.setDataList(getDataList());
+        for (int i = 0; i < mSimpleUseRv.getItemDecorationCount(); i++) {
+            mSimpleUseRv.removeItemDecorationAt(0);
+        }
         switch (type) {
             case LINEAR_HORIZONTAL:
-                mLayoutManager = new LinearLayoutManager(SimpleUseActivity.this, OrientationHelper.HORIZONTAL, false);
+                mLinearDivider.setOrientation(RecyclerView.HORIZONTAL);
+                mLayoutManager = new LinearLayoutManager(DividerTestActivity.this, OrientationHelper.HORIZONTAL, false);
+                mSimpleUseRv.addItemDecoration(mLinearDivider);
                 break;
             case LINEAR_VERTICAL:
-                mLayoutManager = new LinearLayoutManager(SimpleUseActivity.this, OrientationHelper.VERTICAL, false);
+                mLinearDivider.setOrientation(RecyclerView.VERTICAL);
+                mLayoutManager = new LinearLayoutManager(DividerTestActivity.this, OrientationHelper.VERTICAL, false);
+                mSimpleUseRv.addItemDecoration(mLinearDivider);
                 break;
             case GRID_HORIZONTAL:
-                mLayoutManager = new GridLayoutManager(SimpleUseActivity.this, 3, OrientationHelper.HORIZONTAL, false);
+                mLayoutManager = new GridLayoutManager(DividerTestActivity.this, 3, OrientationHelper.HORIZONTAL, false);
+                mSimpleUseRv.addItemDecoration(mGridDivider);
                 break;
             case GRID_VERTICAL:
-                mLayoutManager = new GridLayoutManager(SimpleUseActivity.this, 3, OrientationHelper.VERTICAL, false);
+                mLayoutManager = new GridLayoutManager(DividerTestActivity.this, 3, OrientationHelper.VERTICAL, false);
+                mSimpleUseRv.addItemDecoration(mGridDivider);
                 break;
             case STAGGERED_HORIZONTAL:
                 mLayoutManager = new StaggeredGridLayoutManager(3, OrientationHelper.HORIZONTAL);
@@ -105,11 +119,6 @@ public class SimpleUseActivity extends BaseActivity {
                 break;
         }
         mSimpleUseRv.setLayoutManager(mLayoutManager);
-//        HeaderAndFooterWrapper<ItemEntity> adapter = new HeaderAndFooterWrapper<ItemEntity>(mAdapter);
-//        View headerView = LayoutInflater.from(SimpleUseActivity.this).inflate(R.layout.item_header_view_1, mSimpleUseRv, false);
-//        View headerView1 = LayoutInflater.from(SimpleUseActivity.this).inflate(R.layout.item_header_view_1, mSimpleUseRv, false);
-//        adapter.addHeaderView(headerView);
-//        adapter.addHeaderView(headerView1);
         mSimpleUseRv.setAdapter(mAdapter);
         mAdapter.notifyDataSetChanged();
 

@@ -29,6 +29,12 @@
         <activity
             android:name=".headerandfooter.HeaderFooterActivity"
             android:screenOrientation="portrait"/>
+
+        <!--分割线：Divider （ItemDecoration）-->
+        <activity
+            android:name=".divides.DividerTestActivity"
+            android:screenOrientation="portrait"/>
+
     </application>
 
 </manifest>

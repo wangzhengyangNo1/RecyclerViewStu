@@ -19,9 +19,9 @@ public class HeaderAndFooterWrapper<T> extends RecyclerView.Adapter<RecyclerView
 
     private static final int BASE_TYPE_HEADER = 10000;
     private static final int BASE_TYPE_FOOTER = 20000;
-
     private SparseArrayCompat<View> mHeaderViews = new SparseArrayCompat<>();
     private SparseArrayCompat<View> mFooterViews = new SparseArrayCompat<>();
+
 
     @NonNull
     private RecyclerView.Adapter<RecyclerView.ViewHolder> mInnerAdapter;
