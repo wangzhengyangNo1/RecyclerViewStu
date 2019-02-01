@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.wzhy.recyclerviewstu.MyApp;
@@ -89,6 +90,7 @@ public class NestScrollTestAdapter extends RecyclerView.Adapter<NestScrollTestAd
             }
             holder.titleTv.setLayoutParams(lp);
         }
+
         holder.titleTv.setText(item.title);
     }
 

@@ -131,7 +131,7 @@ public class SimpleUseActivity extends BaseActivity {
 
     }
 
-    private static final int PAGE_SIZE = 20;
+    private static final int PAGE_SIZE = 30;
 
     private List<ItemEntity> getDataList() {
         ArrayList<ItemEntity> dataList = new ArrayList<>();

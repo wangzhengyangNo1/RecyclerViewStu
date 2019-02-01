@@ -9,6 +9,7 @@ import android.widget.TextView;
 import com.wzhy.recyclerviewstu.divides.DividerTestActivity;
 import com.wzhy.recyclerviewstu.headerandfooter.HeaderFooterActivity;
 import com.wzhy.recyclerviewstu.itemtouch.ItemTouchTestActivity;
+import com.wzhy.recyclerviewstu.nestscroll.NestScrollTestActivity;
 import com.wzhy.recyclerviewstu.simple.SimpleUseActivity;
 
 public class MainActivity extends BaseActivity {
@@ -56,7 +57,7 @@ public class MainActivity extends BaseActivity {
         mDividerTv.setOnClickListener(getOnNoDoubleClickListener());
         mItemTouchTv.setOnClickListener(getOnNoDoubleClickListener());
 //        mClickListenerTv.setOnClickListener(getOnNoDoubleClickListener());
-//        mNestScrollTv.setOnClickListener(getOnNoDoubleClickListener());
+        mNestScrollTv.setOnClickListener(getOnNoDoubleClickListener());
 //        mSwipeRefreshTv.setOnClickListener(getOnNoDoubleClickListener());
 //        mRefreshLoadMoreTv.setOnClickListener(getOnNoDoubleClickListener());
 //        mComplexLayoutTv.setOnClickListener(getOnNoDoubleClickListener());
@@ -81,9 +82,9 @@ public class MainActivity extends BaseActivity {
 //            case R.id.click_listener_tv://点击事件
 ////                intent.setClass(MainActivity.this, DDDD.class);
 //                break;
-//            case R.id.nest_scroll_tv://嵌套滑动
-////                intent.setClass(MainActivity.this, DDDD.class);
-//                break;
+            case R.id.nest_scroll_tv://嵌套滑动
+                intent.setClass(MainActivity.this, NestScrollTestActivity.class);
+                break;
 //            case R.id.swipe_refresh_tv://与SwipeRefreshLayout结合加载刷新
 ////                intent.setClass(MainActivity.this, DDDD.class);
 //                break;

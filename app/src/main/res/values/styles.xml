@@ -9,6 +9,11 @@
         <item name="android:listDivider">@drawable/shape_div_linear</item>
     </style>
 
+    <style name="AppThemeNoActionBar" parent="Theme.AppCompat.Light">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
 
     <style name="MBase"/>
 

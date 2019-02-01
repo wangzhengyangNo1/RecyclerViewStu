@@ -6,19 +6,22 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SimpleItemAnimator;
 import android.support.v7.widget.StaggeredGridLayoutManager;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.wzhy.recyclerviewstu.BaseActivity;
 import com.wzhy.recyclerviewstu.R;
 import com.wzhy.recyclerviewstu.base.sample.ItemEntity;
-import com.wzhy.recyclerviewstu.simple.SimpleUseAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 嵌套滑动
+ * 参考博客：【Rtia】https://www.jianshu.com/p/4f9591291365
+ */
 public class NestScrollTestActivity extends BaseActivity {
 
     private RecyclerView mSimpleUseRv;
@@ -28,14 +31,15 @@ public class NestScrollTestActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTheme(R.style.AppThemeNoActionBar);
         setContentView(R.layout.activity_nest_scroll_test);
 
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.setTitle("RecyclerView的简单使用");
-            actionBar.setIcon(R.mipmap.ic_launcher);
-        }
-
+//        ActionBar actionBar = getSupportActionBar();
+//        if (actionBar != null) {
+////            actionBar.setTitle("RecyclerView的简单使用");
+////            actionBar.setIcon(R.mipmap.ic_launcher);
+//            actionBar.hide();
+//        }
 
         initData();
         initView();
@@ -62,6 +66,9 @@ public class NestScrollTestActivity extends BaseActivity {
     private void initRv(int type) {
         mAdapter = new NestScrollTestAdapter();
         mAdapter.setDataList(getDataList());
+//        mAdapter.setHasStableIds(true);
+//        ((SimpleItemAnimator) mSimpleUseRv.getItemAnimator()).setSupportsChangeAnimations(true);
+
         switch (type) {
             case LINEAR_HORIZONTAL:
                 mLayoutManager = new LinearLayoutManager(NestScrollTestActivity.this, OrientationHelper.HORIZONTAL, false);
