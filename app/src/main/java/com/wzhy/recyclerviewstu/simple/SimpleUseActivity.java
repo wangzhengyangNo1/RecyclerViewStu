@@ -23,7 +23,6 @@ public class SimpleUseActivity extends BaseActivity {
     private RecyclerView mSimpleUseRv;
     private SimpleUseAdapter mAdapter;
     RecyclerView.LayoutManager mLayoutManager;
-    private List<ItemEntity> mDataList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

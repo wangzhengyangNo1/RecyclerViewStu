@@ -2,6 +2,7 @@ package com.wzhy.recyclerviewstu.base;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
@@ -14,11 +15,14 @@ import java.util.List;
 
 public abstract class BaseCommAdapter<T> extends RecyclerView.Adapter<BaseCommAdapter.RecyclerVHolder> {
 
+    private final RecyclerView mRv;
     protected List<T> mDataList;
 
     protected Context mContext;
 
     private OnItemClickListener mItemClickListener;
+
+    private View mEmptyView;
 
     public interface OnItemClickListener<T> {
         void onItemClick(View view, T data, int position);
@@ -33,13 +37,58 @@ public abstract class BaseCommAdapter<T> extends RecyclerView.Adapter<BaseCommAd
         } else {
             mDataList = new ArrayList<>(datas);
         }
+        mRv = rv;
         mContext = rv.getContext();
     }
 
     public abstract void convert(RecyclerVHolder holder, T item, int position);
 
     public abstract int getItemLayoutId(int itemViewType);
-    ;
+
+    public void setEmptyView(View emptyView) {
+        this.mEmptyView = emptyView;
+        registerAdapterDataObserver(mObserver);
+    }
+
+    private RecyclerView.AdapterDataObserver mObserver = new RecyclerView.AdapterDataObserver() {
+        @Override
+        public void onChanged() {
+            if (mEmptyView != null && mRv != null) {
+                if (getItemCount() == 0) {
+                    mEmptyView.setVisibility(View.VISIBLE);
+                    mRv.setVisibility(View.GONE);
+                } else {
+                    mEmptyView.setVisibility(View.GONE);
+                    mRv.setVisibility(View.VISIBLE);
+                }
+            }
+        }
+
+        @Override
+        public void onItemRangeChanged(int positionStart, int itemCount) {
+            onChanged();
+        }
+
+        @Override
+        public void onItemRangeChanged(int positionStart, int itemCount, @Nullable Object payload) {
+            onChanged();
+        }
+
+        @Override
+        public void onItemRangeInserted(int positionStart, int itemCount) {
+            onChanged();
+        }
+
+        @Override
+        public void onItemRangeRemoved(int positionStart, int itemCount) {
+            onChanged();
+        }
+
+        @Override
+        public void onItemRangeMoved(int fromPosition, int toPosition, int itemCount) {
+            onChanged();
+        }
+    };
 
     @NonNull
     @Override

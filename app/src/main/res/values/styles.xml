@@ -12,6 +12,7 @@
 
     <style name="MBase"/>
 
+    <!--分隔线-->
     <style name="MBase.Line">
         <item name="android:background">@color/colorGrayE6</item>
     </style>
@@ -25,6 +26,15 @@
         <item name="android:layout_width">@dimen/line_width</item>
         <item name="android:layout_height">match_parent</item>
     </style>
+
+
+    <!--Dialog-->
+    <style name="MBase.Dialog" />
+
+    <style name="MBase.Dialog.BottomSheet" parent="Theme.Design.BottomSheetDialog" />
+
+
+
 
 
 </resources>

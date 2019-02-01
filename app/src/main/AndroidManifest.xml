@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.wzhy.recyclerviewstu">
 
+    <uses-permission android:name="android.permission.VIBRATE" />
+
     <application
         android:name=".MyApp"
         android:allowBackup="true"
@@ -33,6 +35,16 @@
         <!--分割线：Divider （ItemDecoration）-->
         <activity
             android:name=".divides.DividerTestActivity"
+            android:screenOrientation="portrait"/>
+
+        <!--拖拽和滑动删除-->
+          <activity
+            android:name=".itemtouch.ItemTouchTestActivity"
+            android:screenOrientation="portrait"/>
+
+        <!--拖拽和滑动删除-->
+          <activity
+            android:name=".nestscroll.NestScrollTestActivity"
             android:screenOrientation="portrait"/>
 
     </application>
